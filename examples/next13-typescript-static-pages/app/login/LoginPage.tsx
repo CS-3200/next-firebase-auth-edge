@@ -39,11 +39,10 @@ export function LoginPage() {
 
   return (
     <div className={styles.page}>
-      <h2>next-firebase-auth-edge example login page</h2>
       {!tenant && !isLoading && !hasLogged && (
         <div className={styles.info}>
           <p>
-            No user found. Singing in as anonymous... <LoadingIcon />
+            Gleich geht's los... <LoadingIcon />
           </p>
         </div>
       )}
@@ -51,9 +50,9 @@ export function LoginPage() {
         <Button
           loading={isLoading}
           disabled={isLoading || !tenant}
-          onClick={handleLoginWithGoogle}
+          onClick={()=>router.push("/profile")}
         >
-          Log in with Google
+          Starten
         </Button>
       )}
       {hasLogged && (

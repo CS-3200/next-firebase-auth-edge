@@ -54,6 +54,7 @@ export const AuthProvider: React.FunctionComponent<AuthProviderProps> = ({
   const [tenant, setTenant] = React.useState(defaultTenant);
 
   const handleIdTokenChanged = async (firebaseUser: FirebaseUser | null) => {
+    console.log("Token changed")
     if (firebaseUser && tenant && firebaseUser.uid === tenant.id) {
       firstLoadRef.current = false;
       return;
@@ -89,6 +90,7 @@ export const AuthProvider: React.FunctionComponent<AuthProviderProps> = ({
     firstLoadRef.current = false;
     const tokenResult = await firebaseUser.getIdTokenResult();
     startTransition(() => {
+      console.log("Tenant")
       setTenant(mapFirebaseResponseToTenant(tokenResult, firebaseUser));
     });
   };
